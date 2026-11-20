@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Manejo Pro — Meliponário & Apicultura Offline</title>
+  <title>Manejo Pro — Meliponário & Manejo</title>
   <meta name="theme-color" content="#14532d" />
   <style>
     /* =====================================================================
-       DESIGN TOKENS & PALETA VERDE-MATA / ÂMBAR-MEL (100% EMBUTIDO)
+       IDENTIDADE VISUAL: VERDE-MATA & ÂMBAR/MEL (100% EMBUTIDA, ZERO CDNs)
        ===================================================================== */
     :root {
       --forest-900: #052e16;
@@ -50,12 +50,12 @@
       background-color: var(--slate-100);
       color: var(--slate-900);
       line-height: 1.45;
-      padding-bottom: 88px;
+      padding-bottom: 86px;
       overflow-x: hidden;
     }
 
     /* =====================================================================
-       CABEÇALHO FIXO
+       CABEÇALHO FIXO & NOME EDITÁVEL DO MELIPONÁRIO
        ===================================================================== */
     .app-header {
       background: linear-gradient(135deg, var(--forest-900) 0%, var(--forest-800) 100%);
@@ -83,6 +83,8 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      min-width: 0;
+      flex: 1;
     }
 
     .brand-icon {
@@ -98,14 +100,45 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
     }
 
-    .brand-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: -0.01em;
+    .brand-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .brand-title-row {
       display: flex;
       align-items: center;
       gap: 6px;
       flex-wrap: wrap;
+    }
+
+    .brand-name-btn {
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 1.12rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      text-align: left;
+      padding: 2px 6px;
+      margin-left: -6px;
+      border-radius: 8px;
+      max-width: 100%;
+    }
+
+    .brand-name-btn:hover,
+    .brand-name-btn:active {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .brand-name-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .offline-pill {
@@ -118,6 +151,7 @@
       display: inline-flex;
       align-items: center;
       gap: 4px;
+      white-space: nowrap;
     }
 
     .offline-dot {
@@ -125,6 +159,13 @@
       height: 6px;
       border-radius: 50%;
       background: #4ade80;
+    }
+
+    .brand-subtitle {
+      font-size: 0.76rem;
+      color: #d1fae5;
+      font-weight: 600;
+      margin-top: 1px;
     }
 
     .btn-header {
@@ -140,6 +181,7 @@
       align-items: center;
       gap: 6px;
       min-height: 40px;
+      flex-shrink: 0;
     }
 
     .btn-header:active {
@@ -147,7 +189,7 @@
     }
 
     /* =====================================================================
-       CONTAINER PRINCIPAL & BANNERS
+       CONTAINER, BANNER DE BACKUP, KPIS & AÇÕES RÁPIDAS
        ===================================================================== */
     .container {
       max-width: 780px;
@@ -169,9 +211,6 @@
       font-size: 0.8rem;
     }
 
-    /* =====================================================================
-       KPIS & BOTÕES DE AÇÃO RÁPIDA NO CAMPO
-       ===================================================================== */
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -329,7 +368,7 @@
     }
 
     /* =====================================================================
-       CARDS & OS 4 PONTOS DO DEDÉ
+       CARTÕES DE CAIXAS, ISCAS E DIÁRIO
        ===================================================================== */
     .card-list {
       display: flex;
@@ -403,6 +442,7 @@
     .badge-instalada { background: #f1f5f9; color: #334155; }
     .badge-transferida { background: #dcfce7; color: #166534; }
 
+    /* GRADE DOS 4 PONTOS DO DEDÉ */
     .dede-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -588,7 +628,7 @@
     }
 
     /* =====================================================================
-       MODAIS, FORMULÁRIOS & CONFIRMAÇÃO INTERNA (SEM alert/confirm)
+       MODAIS, FORMULÁRIOS & CONFIRMAÇÕES INTERNAS (ZERO ALERT/CONFIRM NATIVO)
        ===================================================================== */
     .modal-backdrop {
       position: fixed;
@@ -768,28 +808,30 @@
 </head>
 <body>
 
-  <!-- NOTIFICAÇÃO FLUTUANTE (TOAST) -->
+  <!-- MENSAGEM FLUTUANTE DE RETORNO -->
   <div id="toast" class="toast"></div>
 
-  <!-- CABEÇALHO FIXO -->
+  <!-- CABEÇALHO SUPERIOR -->
   <header class="app-header">
     <div class="header-inner">
       <div class="header-top">
         <div class="brand">
           <div class="brand-icon" aria-hidden="true">
-            <!-- Ícone SVG Favo / Hexágono em Âmbar -->
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
               <polygon points="12 2 19 6 19 14 12 18 5 14 5 6 12 2"></polygon>
               <polygon points="12 6.5 15.5 8.5 15.5 12.5 12 14.5 8.5 12.5 8.5 8.5 12 6.5"></polygon>
               <line x1="12" y1="18" x2="12" y2="22"></line>
             </svg>
           </div>
-          <div>
-            <div class="brand-title">
-              Manejo Pro
+          <div class="brand-info">
+            <div class="brand-title-row">
+              <button type="button" class="brand-name-btn" onclick="openEditMeliponarioModal()" title="Toque para editar o nome do meliponário">
+                <span id="header-meliponario-name" class="brand-name-text">Meu Meliponário</span>
+                <span aria-hidden="true" style="font-size:0.95rem; color:#fde68a;">✎</span>
+              </button>
               <span class="offline-pill"><span class="offline-dot"></span> Offline • Salvo</span>
             </div>
-            <div style="font-size:0.75rem; color:#d1fae5;">Meliponário & Apicultura de Campo</div>
+            <div class="brand-subtitle">Meliponário &amp; Manejo</div>
           </div>
         </div>
         <button type="button" class="btn-header" onclick="openBackupModal()">
@@ -806,7 +848,7 @@
 
   <main class="container">
 
-    <!-- LEMBRETE DE BACKUP (> 7 DIAS) -->
+    <!-- ALERTA SEMANAL DE BACKUP -->
     <div id="backup-alert" class="backup-banner hidden">
       <span><strong>Lembrete de Segurança:</strong> Faz mais de 7 dias do último backup. Exporte uma cópia para seu WhatsApp.</span>
       <button type="button" class="btn-amber" style="padding:7px 12px; font-size:0.76rem;" onclick="exportJSON()">Salvar</button>
@@ -818,7 +860,7 @@
     <section id="view-hoje">
       <div id="kpi-container" class="kpi-grid"></div>
 
-      <!-- 4 BOTÕES DE AÇÃO RÁPIDA NO CAMPO -->
+      <!-- 4 BOTÕES DE AÇÃO RÁPIDA -->
       <div class="quick-grid">
         <button type="button" class="quick-btn amber" onclick="openManejoRapidoModal()">⚡ + Manejo Rápido</button>
         <button type="button" class="quick-btn" onclick="openCaixaModal()">🐝 + Nova Caixa</button>
@@ -827,7 +869,7 @@
       </div>
 
       <div class="section-header">
-        <h2 class="section-title">⚡ Atenção Hoje & Próximos Dias</h2>
+        <h2 class="section-title">⚡ Atenção Hoje &amp; Próximos Dias</h2>
         <span id="hoje-data-label" style="font-size:0.76rem; color:var(--slate-500); font-weight:700;"></span>
       </div>
 
@@ -835,11 +877,11 @@
     </section>
 
     <!-- =========================================================
-         ABA 2: CAIXAS & ENXAMES (OS 4 PONTOS ESSENCIAIS DO DEDÉ)
+         ABA 2: CAIXAS (OS 4 PONTOS DO DEDÉ)
          ========================================================= -->
     <section id="view-caixas" class="hidden">
       <div class="section-header">
-        <h2 class="section-title">🐝 Caixas & Enxames</h2>
+        <h2 class="section-title">🐝 Caixas &amp; Enxames</h2>
         <button type="button" class="btn-primary" style="padding:9px 13px; font-size:0.82rem;" onclick="openCaixaModal()">+ Nova Caixa</button>
       </div>
 
@@ -854,11 +896,11 @@
     </section>
 
     <!-- =========================================================
-         ABA 3: ISCAS DE CAPTURA (ISCAS-PET / PONTOS NA MATA)
+         ABA 3: ISCAS (PONTOS DE ISCA-PET / CAPTURA)
          ========================================================= -->
     <section id="view-iscas" class="hidden">
       <div class="section-header">
-        <h2 class="section-title">🪤 Pontos de Isca & Captura</h2>
+        <h2 class="section-title">🪤 Pontos de Isca &amp; Captura</h2>
         <button type="button" class="btn-amber" style="padding:9px 13px; font-size:0.82rem;" onclick="openIscaModal()">+ Nova Isca</button>
       </div>
 
@@ -873,12 +915,12 @@
     </section>
 
     <!-- =========================================================
-         ABA 4: DIÁRIO & CAIXA (3 SUB-ABAS)
+         ABA 4: DIÁRIO & CAIXA
          ========================================================= -->
     <section id="view-diario" class="hidden">
       <div class="sub-switcher">
         <button type="button" id="sub-btn-log" class="sub-btn active" onclick="switchDiarioSub('LOG')">📓 Diário de Campo</button>
-        <button type="button" id="sub-btn-fin" class="sub-btn" onclick="switchDiarioSub('FIN')">💰 Mel & Caixa</button>
+        <button type="button" id="sub-btn-fin" class="sub-btn" onclick="switchDiarioSub('FIN')">💰 Mel &amp; Caixa</button>
         <button type="button" id="sub-btn-wa" class="sub-btn" onclick="switchDiarioSub('WA')">📲 Lista WhatsApp</button>
       </div>
 
@@ -896,7 +938,7 @@
         <div id="lista-diario" class="card-list"></div>
       </div>
 
-      <!-- SUB-ABA 2: MEL & CAIXA (FINANCEIRO EXCLUSIVO ABELHAS) -->
+      <!-- SUB-ABA 2: MEL & CAIXA -->
       <div id="diario-fin-pane" class="hidden">
         <div class="kpi-grid" style="grid-template-columns: repeat(3, 1fr);">
           <div class="kpi-card">
@@ -914,17 +956,17 @@
         </div>
 
         <div class="section-header">
-          <h2 class="section-title">Colheitas, Vendas & Despesas</h2>
+          <h2 class="section-title">Colheitas, Vendas &amp; Despesas</h2>
           <button type="button" class="btn-amber" style="padding:8px 12px; font-size:0.78rem;" onclick="openMovModal()">+ Lançar</button>
         </div>
         <div id="lista-movimentos" class="card-list"></div>
       </div>
 
-      <!-- SUB-ABA 3: LISTA WHATSAPP (APENAS TIPOS DE MEL / ESPÉCIES) -->
+      <!-- SUB-ABA 3: LISTA WHATSAPP -->
       <div id="diario-wa-pane" class="hidden">
         <div class="item-card">
           <h3 class="card-title">Montar Lista de Disponibilidade (WhatsApp)</h3>
-          <p class="card-meta" style="margin-bottom:10px;">Gere uma mensagem limpa para clientes ou grupos apenas com os tipos de mel / abelhas disponíveis, sem expor dados internos das suas caixas.</p>
+          <p class="card-meta" style="margin-bottom:10px;">Gere uma mensagem limpa para clientes ou grupos apenas com os tipos de mel / produtos disponíveis, sem expor dados internos das suas caixas.</p>
 
           <div class="form-group">
             <label class="form-label">Sua Chave PIX ou Contato (opcional)</label>
@@ -936,7 +978,7 @@
             <textarea id="wa-itens-custom" rows="4" class="form-textarea" placeholder="Ex:&#10;• Mel de Jataí (pote 250g) — R$ 45,00&#10;• Mel de Mandaçaia (pote 250g) — R$ 55,00&#10;• Própolis / Enxames — consulte!" oninput="renderWaPreview()"></textarea>
           </div>
 
-          <button type="button" class="btn-outline" style="width:100%; margin-bottom:8px;" onclick="pullAutoItemsToWa()">🔄 Puxar Tipos de Mel (Espécies com Melgueira)</button>
+          <button type="button" class="btn-outline" style="width:100%; margin-bottom:8px;" onclick="pullAutoItemsToWa()">🔄 Puxar Tipos de Mel Disponíveis</button>
 
           <div id="wa-preview-box" class="wa-preview"></div>
 
@@ -950,7 +992,7 @@
 
   </main>
 
-  <!-- BARRA DE NAVEGAÇÃO INFERIOR FIXA (4 ABAS) -->
+  <!-- NAVEGAÇÃO INFERIOR FIXA -->
   <nav class="bottom-nav">
     <div class="bottom-nav-inner">
       <button type="button" class="nav-item active" data-tab="hoje" onclick="switchTab('hoje')">
@@ -982,13 +1024,33 @@
           <line x1="16" y1="13" x2="8" y2="13"/>
           <line x1="16" y1="17" x2="8" y2="17"/>
         </svg>
-        <span>Diário & Caixa</span>
+        <span>Diário &amp; Caixa</span>
       </button>
     </div>
   </nav>
 
   <!-- =========================================================
-       MODAL 1: CADASTRO / EDIÇÃO DE CAIXA (4 PONTOS DO DEDÉ)
+       MODAL 1: EDITAR NOME DO MELIPONÁRIO / APIÁRIO
+       ========================================================= -->
+  <div id="modal-meliponario" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title">🐝 Nome do Meliponário / Apiário</h3>
+        <button type="button" class="btn-close" onclick="closeModal('modal-meliponario')">✕</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="input-meliponario-nome">Como deseja chamar seu meliponário no app?</label>
+        <input type="text" id="input-meliponario-nome" class="form-input" placeholder="Ex: Meliponário Paraíso, Apiário do Dedé..." />
+        <p style="font-size:0.75rem; color:var(--slate-500); margin-top:6px;">
+          Esse nome aparece no topo do aplicativo, no cabeçalho da Lista do WhatsApp e no arquivo de backup.
+        </p>
+      </div>
+      <button type="button" class="btn-primary" style="width:100%;" onclick="saveMeliponarioName()">Salvar Nome</button>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MODAL 2: CADASTRO / EDIÇÃO DE CAIXA
        ========================================================= -->
   <div id="modal-caixa" class="modal-backdrop">
     <div class="modal-box">
@@ -1019,7 +1081,6 @@
         </div>
       </div>
 
-      <!-- 1. FORÇA DO ENXAME -->
       <div class="form-group">
         <label class="form-label">1. Força do Enxame *</label>
         <div class="seg-group cols-4" id="seg-cx-forca">
@@ -1030,7 +1091,6 @@
         </div>
       </div>
 
-      <!-- 2. ORIGEM DO ENXAME -->
       <div class="form-group">
         <label class="form-label">2. Origem do Enxame *</label>
         <div class="seg-group cols-4" id="seg-cx-origem">
@@ -1042,7 +1102,6 @@
       </div>
 
       <div class="form-row-2">
-        <!-- 3. NÚMERO DE MELGUEIRAS -->
         <div class="form-group">
           <label class="form-label">3. Nº de Melgueiras</label>
           <div style="display:flex; align-items:center; gap:8px;">
@@ -1052,7 +1111,6 @@
           </div>
         </div>
 
-        <!-- 4. PRÓXIMO MANEJO -->
         <div class="form-group">
           <label class="form-label">4. Próximo Manejo</label>
           <input type="date" id="cx-prox-manejo" class="form-input" />
@@ -1085,7 +1143,7 @@
   </div>
 
   <!-- =========================================================
-       MODAL 2: REGISTRO RÁPIDO DE MANEJO
+       MODAL 3: REGISTRO RÁPIDO DE MANEJO
        ========================================================= -->
   <div id="modal-manejo-rapido" class="modal-backdrop">
     <div class="modal-box">
@@ -1106,8 +1164,8 @@
           <button type="button" class="seg-btn" data-val="Alimentação" onclick="selectSeg('seg-mr-acao', 'Alimentação')">🍯 Alimentação</button>
           <button type="button" class="seg-btn" data-val="Melgueira (+/-)" onclick="selectSeg('seg-mr-acao', 'Melgueira (+/-)')">📦 Melgueira (+/-)</button>
           <button type="button" class="seg-btn" data-val="Divisão de Enxame" onclick="selectSeg('seg-mr-acao', 'Divisão de Enxame')">✂️ Divisão (Cria Filha)</button>
-          <button type="button" class="seg-btn" data-val="Colheita" onclick="selectSeg('seg-mr-acao', 'Colheita')">🏺 Colheita</button>
-          <button type="button" class="seg-btn" data-val="Pragas / Forídeos" onclick="selectSeg('seg-mr-acao', 'Pragas / Forídeos')">🛡️ Pragas / Forídeos</button>
+          <button type="button" class="seg-btn" data-val="Colheita de Mel/Própolis" onclick="selectSeg('seg-mr-acao', 'Colheita de Mel/Própolis')">🏺 Colheita</button>
+          <button type="button" class="seg-btn" data-val="Controle de Pragas / Forídeos" onclick="selectSeg('seg-mr-acao', 'Controle de Pragas / Forídeos')">🛡️ Pragas / Forídeos</button>
         </div>
       </div>
 
@@ -1148,7 +1206,7 @@
   </div>
 
   <!-- =========================================================
-       MODAL 3: CADASTRO / EDIÇÃO DE ISCA-PET / CAPTURA
+       MODAL 4: CADASTRO / EDIÇÃO DE ISCA-PET / CAPTURA
        ========================================================= -->
   <div id="modal-isca" class="modal-backdrop">
     <div class="modal-box">
@@ -1217,7 +1275,7 @@
   </div>
 
   <!-- =========================================================
-       MODAL 4: CAPTURA DE ESPÉCIE NA ISCA (SEM prompt())
+       MODAL 5: CAPTURA DE ESPÉCIE NA ISCA
        ========================================================= -->
   <div id="modal-captura" class="modal-backdrop">
     <div class="modal-box">
@@ -1236,7 +1294,7 @@
   </div>
 
   <!-- =========================================================
-       MODAL 5: LANÇAMENTO FINANCEIRO (MEL & CAIXA)
+       MODAL 6: LANÇAMENTO FINANCEIRO (MEL & CAIXA)
        ========================================================= -->
   <div id="modal-mov" class="modal-backdrop">
     <div class="modal-box">
@@ -1270,12 +1328,12 @@
   </div>
 
   <!-- =========================================================
-       MODAL 6: BACKUP & SEGURANÇA OFFLINE (.JSON)
+       MODAL 7: BACKUP & RESTAURAÇÃO (.JSON)
        ========================================================= -->
   <div id="modal-backup" class="modal-backdrop">
     <div class="modal-box">
       <div class="modal-header">
-        <h3 class="modal-title">💾 Backup & Segurança Offline</h3>
+        <h3 class="modal-title">💾 Backup &amp; Segurança Offline</h3>
         <button type="button" class="btn-close" onclick="closeModal('modal-backup')">✕</button>
       </div>
       <p style="font-size:0.84rem; color:var(--slate-600); margin-bottom:14px;">
@@ -1285,14 +1343,14 @@
         <button type="button" class="btn-primary" onclick="exportJSON()">⬇️ Baixar Backup Completo (.JSON)</button>
         <label class="btn-outline" style="text-align:center; cursor:pointer;">
           ⬆️ Restaurar Arquivo de Backup (.JSON)
-          <input type="file" id="backup-file-input" accept=".json,application/json" style="display:none;" onchange="importJSON(event)" />
+          <input type="file" accept=".json,application/json" style="display:none;" onchange="importJSON(event)" />
         </label>
       </div>
     </div>
   </div>
 
   <!-- =========================================================
-       MODAL 7: CONFIRMAÇÃO DE AÇÃO (SUBSTITUI confirm() NATIVO)
+       MODAL 8: CONFIRMAÇÃO DE EXCLUSÃO
        ========================================================= -->
   <div id="modal-confirm" class="modal-backdrop">
     <div class="modal-box">
@@ -1312,6 +1370,7 @@
     const STORAGE_KEY = 'manejo_pro_abelhas_v1';
 
     let state = {
+      meliponarioNome: 'Meu Meliponário',
       caixas: [],
       iscas: [],
       diario: [],
@@ -1329,7 +1388,7 @@
     let _confirmCallback = null;
 
     /* =====================================================================
-       UTILITÁRIOS DE DATA, MOEDA E NOTIFICAÇÕES
+       UTILITÁRIOS
        ===================================================================== */
     function todayISO(offsetDays = 0) {
       const d = new Date();
@@ -1381,7 +1440,7 @@
     }
 
     /* =====================================================================
-       PERSISTÊNCIA LOCAL (localStorage) E DADOS INICIAIS REALISTAS
+       PERSISTÊNCIA LOCAL (localStorage) & NOME DO MELIPONÁRIO
        ===================================================================== */
     function saveState() {
       try {
@@ -1396,7 +1455,9 @@
       if (raw) {
         try {
           const parsed = JSON.parse(raw);
+          const nomeSalvo = (parsed.meliponarioNome || parsed.nomeMeliponario || '').trim();
           state = {
+            meliponarioNome: nomeSalvo || 'Meu Meliponário',
             caixas: Array.isArray(parsed.caixas) ? parsed.caixas : [],
             iscas: Array.isArray(parsed.iscas) ? parsed.iscas : [],
             diario: Array.isArray(parsed.diario) ? parsed.diario : [],
@@ -1407,11 +1468,12 @@
           };
           return;
         } catch (e) {
-          console.error('Erro ao ler localStorage:', e);
+          console.error('Erro ao ler dados locais:', e);
         }
       }
 
-      // Dados iniciais realistas (carregados apenas se localStorage estiver vazio)
+      // Dados iniciais de exemplo
+      state.meliponarioNome = 'Meu Meliponário';
       state.caixas = [
         {
           id: 'cx1',
@@ -1491,8 +1553,34 @@
       saveState();
     }
 
+    function applyMeliponarioBranding() {
+      const nome = (state.meliponarioNome || '').trim() || 'Meu Meliponário';
+      document.getElementById('header-meliponario-name').textContent = nome;
+      document.title = `${nome} — Manejo Pro`;
+    }
+
+    function openEditMeliponarioModal() {
+      const inp = document.getElementById('input-meliponario-nome');
+      inp.value = state.meliponarioNome || 'Meu Meliponário';
+      openModal('modal-meliponario');
+      setTimeout(() => {
+        inp.focus();
+        inp.select();
+      }, 100);
+    }
+
+    function saveMeliponarioName() {
+      const val = document.getElementById('input-meliponario-nome').value.trim();
+      state.meliponarioNome = val || 'Meu Meliponário';
+      saveState();
+      applyMeliponarioBranding();
+      renderWaPreview();
+      closeModal('modal-meliponario');
+      showToast(`Nome atualizado: ${state.meliponarioNome}`);
+    }
+
     /* =====================================================================
-       NAVEGAÇÃO ENTRE ABAS & MODAIS
+       NAVEGAÇÃO & MODAIS
        ===================================================================== */
     function switchTab(tab) {
       currentTab = tab;
@@ -1543,7 +1631,7 @@
     }
 
     /* =====================================================================
-       ABA 1: HOJE (PAINEL & ALERTAS DE CAMPO)
+       ABA 1: HOJE (PAINEL & ALERTAS)
        ===================================================================== */
     function renderHoje() {
       document.getElementById('hoje-data-label').textContent = formatDateBR(todayISO());
@@ -1631,7 +1719,7 @@
     }
 
     /* =====================================================================
-       ABA 2: CAIXAS & ENXAMES (OS 4 PONTOS DO DEDÉ)
+       ABA 2: CAIXAS (OS 4 PONTOS DO DEDÉ)
        ===================================================================== */
     function labelForca(f) {
       const m = { FORTE: 'Forte', MEDIO: 'Médio', FRACO: 'Fraco', FORMACAO: 'Em Formação' };
@@ -1807,7 +1895,7 @@
     }
 
     /* =====================================================================
-       ABA 3: ISCAS DE CAPTURA (ISCAS-PET)
+       ABA 3: ISCAS DE CAPTURA
        ===================================================================== */
     function setIscaFilter(f) {
       iscaFilter = f;
@@ -2004,7 +2092,7 @@
     }
 
     /* =====================================================================
-       MODAL 5: MANEJO RÁPIDO UNIFICADO
+       MODAL 3: REGISTRO RÁPIDO DE MANEJO
        ===================================================================== */
     function openManejoRapidoModal(preselect = '') {
       const sel = document.getElementById('mr-alvo');
@@ -2100,7 +2188,7 @@
     }
 
     /* =====================================================================
-       ABA 4: DIÁRIO DE CAMPO, MEL & CAIXA E LISTA WHATSAPP
+       ABA 4: DIÁRIO, MEL & CAIXA E LISTA WHATSAPP
        ===================================================================== */
     function setDiarioFilter(f) {
       diarioFilter = f;
@@ -2190,7 +2278,7 @@
     }
 
     /* =====================================================================
-       GERADOR WHATSAPP (APENAS TIPOS DE MEL / ESPÉCIES — SEM DADOS DAS CAIXAS)
+       LISTA WHATSAPP (APENAS TIPOS DE MEL / ESPÉCIES — SEM EXPOR CAIXAS)
        ===================================================================== */
     function saveWaConfig() {
       state.waPix = document.getElementById('wa-pix').value;
@@ -2217,9 +2305,10 @@
     }
 
     function buildWaMessage() {
+      const nomeHeader = ((state.meliponarioNome || '').trim() || 'MEU MELIPONÁRIO').toUpperCase();
       const itens = document.getElementById('wa-itens-custom').value.trim() || '• Mel puro disponível — consulte sabores e tamanhos!';
       const pix = document.getElementById('wa-pix').value.trim();
-      let msg = `🍯🐝 *MELIPONÁRIO — DISPONIBILIDADE*\n_Atualizado em ${formatDateBR(todayISO())}_\n\n${itens}\n`;
+      let msg = `🍯🐝 *${nomeHeader} — DISPONIBILIDADE*\n_Atualizado em ${formatDateBR(todayISO())}_\n\n${itens}\n`;
       if (pix) {
         msg += `\n💳 *Pagamento / PIX:* ${pix}\n`;
       }
@@ -2266,10 +2355,11 @@
       state.lastBackup = Date.now();
       saveState();
       document.getElementById('backup-alert').classList.add('hidden');
+      const slug = ((state.meliponarioNome || 'MeuMeliponario').replace(/[^a-zA-Z0-9_-]+/g, '_'));
       const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = `ManejoPro_Abelhas_Backup_${todayISO()}.json`;
+      a.download = `ManejoPro_${slug}_Backup_${todayISO()}.json`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -2286,7 +2376,9 @@
           if (!Array.isArray(parsed.caixas)) {
             throw new Error('Formato inválido');
           }
+          const nomeSalvo = (parsed.meliponarioNome || parsed.nomeMeliponario || '').trim();
           state = {
+            meliponarioNome: nomeSalvo || 'Meu Meliponário',
             caixas: parsed.caixas || [],
             iscas: parsed.iscas || [],
             diario: parsed.diario || [],
@@ -2296,6 +2388,7 @@
             lastBackup: parsed.lastBackup || Date.now()
           };
           saveState();
+          applyMeliponarioBranding();
           renderAll();
           closeModal('modal-backup');
           showToast('Backup restaurado com sucesso!');
@@ -2316,6 +2409,7 @@
     }
 
     function renderAll() {
+      applyMeliponarioBranding();
       renderHoje();
       renderCaixas();
       renderIscas();
