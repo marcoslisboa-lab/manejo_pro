@@ -711,7 +711,9 @@
       </div>
     </nav>
 
-    <!-- MODAIS DO APLICATIVO -->
+    <!-- =========================================================
+         MODAIS DO APLICATIVO
+         ========================================================= -->
     <div id="modal-nome" class="modal-backdrop">
       <div class="modal-box">
         <div class="modal-header">
@@ -744,6 +746,7 @@
       </div>
     </div>
 
+    <!-- MODAL CAIXA / COLMEIA -->
     <div id="modal-caixa" class="modal-backdrop">
       <div class="modal-box">
         <div class="modal-header">
@@ -783,4 +786,1429 @@
           </div>
         </div>
 
-        <div class="form-group
+        <div class="form-group">
+          <label class="form-label">2. Origem do Enxame *</label>
+          <div class="seg-group cols-4" id="seg-cx-origem">
+            <button type="button" class="seg-btn amber-sel" data-val="RESGATE" onclick="selectSeg('seg-cx-origem', 'RESGATE')">🪤 Resgate/Isca</button>
+            <button type="button" class="seg-btn amber-sel" data-val="DIVISAO" onclick="selectSeg('seg-cx-origem', 'DIVISAO')">✂️ Divisão</button>
+            <button type="button" class="seg-btn amber-sel" data-val="COMPRA" onclick="selectSeg('seg-cx-origem', 'COMPRA')">🛒 Compra</button>
+            <button type="button" class="seg-btn amber-sel" data-val="NATIVO" onclick="selectSeg('seg-cx-origem', 'NATIVO')">🌳 Nativo</button>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="cx-melgueiras">3. Qtd. Melgueiras</label>
+            <input type="number" id="cx-melgueiras" class="form-input" min="0" max="20" value="0" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cx-rainha">Status da Rainha / Postura</label>
+            <select id="cx-rainha" class="form-select">
+              <option value="Postura regular / OK">Postura regular / OK</option>
+              <option value="Rainha nova / Princesa">Rainha nova / Princesa</option>
+              <option value="Realeira / Em substituição">Realeira / Em substituição</option>
+              <option value="Orfã / Sem postura">Orfã / Sem postura</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="cx-quadros-cria">Quadros / Discos de Cria</label>
+            <input type="number" id="cx-quadros-cria" class="form-input" min="0" max="30" value="0" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cx-quadros-alimento">Quadros / Potes Alimento</label>
+            <input type="number" id="cx-quadros-alimento" class="form-input" min="0" max="30" value="0" />
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="cx-proximo-manejo">4. Próximo Manejo / Ação</label>
+            <select id="cx-proximo-manejo" class="form-select">
+              <option value="Revisão de rotina">Revisão de rotina</option>
+              <option value="Alimentar (xarope/pólen)">Alimentar (xarope/pólen)</option>
+              <option value="Colocar melgueira">Colocar melgueira</option>
+              <option value="Colher mel">Colher mel</option>
+              <option value="Fazer divisão">Fazer divisão</option>
+              <option value="Reforçar com cria">Reforçar com cria</option>
+              <option value="Controle de forídeos/pragas">Controle de forídeos/pragas</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cx-proxima-data">Data Próxima Revisão *</label>
+            <input type="date" id="cx-proxima-data" class="form-input" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="cx-local">Local / Meliponário / Bancada</label>
+          <input type="text" id="cx-local" class="form-input" placeholder="Ex: Bancada Norte, Pomar..." />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="cx-obs">Observações da Ficha</label>
+          <textarea id="cx-obs" rows="2" class="form-textarea" placeholder="Notas sobre cera, própolis, temperatura, vedação..."></textarea>
+        </div>
+
+        <button type="button" class="btn-primary" style="width:100%;" onclick="saveCaixa()">Salvar Ficha da Caixa</button>
+      </div>
+    </div>
+
+    <!-- MODAL MANEJO RÁPIDO -->
+    <div id="modal-manejo" class="modal-backdrop">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 class="modal-title">⚡ Registrar Manejo / Revisão</h3>
+          <button type="button" class="btn-close" onclick="closeModal('modal-manejo')">✕</button>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="mn-caixa-id">Caixa / Colmeia *</label>
+          <select id="mn-caixa-id" class="form-select"></select>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="mn-tipo">Tipo de Manejo *</label>
+            <select id="mn-tipo" class="form-select">
+              <option value="Revisão completa">Revisão completa</option>
+              <option value="Alimentação energética/proteica">Alimentação energética/proteica</option>
+              <option value="Adição de melgueira">Adição de melgueira</option>
+              <option value="Colheita de mel">Colheita de mel</option>
+              <option value="Divisão / Multiplicação">Divisão / Multiplicação</option>
+              <option value="Transferência de isca">Transferência de isca</option>
+              <option value="Manejo sanitário / Limpeza">Manejo sanitário / Limpeza</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="mn-forca">Força Observada</label>
+            <select id="mn-forca" class="form-select">
+              <option value="FORTE">🟢 Forte</option>
+              <option value="MEDIO">🟡 Médio</option>
+              <option value="FRACO">🔴 Fraco</option>
+              <option value="FORMACAO">🔵 Formação</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="mn-melgueiras">Melgueiras Atuais</label>
+            <input type="number" id="mn-melgueiras" class="form-input" min="0" max="20" value="0" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="mn-dias-prox">Reagendar Revisão em (dias)</label>
+            <input type="number" id="mn-dias-prox" class="form-input" min="1" max="180" value="15" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="mn-prox-acao">Próximo Manejo Planejado</label>
+          <input type="text" id="mn-prox-acao" class="form-input" value="Revisão de rotina" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="mn-notas">Anotações do Manejo</label>
+          <textarea id="mn-notas" rows="2" class="form-textarea" placeholder="O que foi feito e observado na caixa..."></textarea>
+        </div>
+
+        <button type="button" class="btn-amber" style="width:100%;" onclick="saveManejoRapido()">Salvar Manejo e Atualizar Ficha</button>
+      </div>
+    </div>
+
+    <!-- MODAL ISCA DE CAPTURA -->
+    <div id="modal-isca" class="modal-backdrop">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 id="modal-isca-title" class="modal-title">🪤 Ponto de Isca / Captura</h3>
+          <button type="button" class="btn-close" onclick="closeModal('modal-isca')">✕</button>
+        </div>
+        <input type="hidden" id="isc-id" />
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="isc-codigo">Código da Isca *</label>
+            <input type="text" id="isc-codigo" class="form-input" placeholder="Ex: ISCA-01" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="isc-status">Status *</label>
+            <select id="isc-status" class="form-select">
+              <option value="INSTALADA">🌲 Instalada (Aguardando)</option>
+              <option value="CAPTURADA">🐝 Capturada (Com enxame)</option>
+              <option value="TRANSFERIDA">✅ Transferida para Caixa</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="isc-especie">Espécie Capturada / Alvo</label>
+            <input type="text" id="isc-especie" class="form-input" placeholder="Ex: Jataí, Mandaçaia..." />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="isc-data">Data Instalação / Captura</label>
+            <input type="date" id="isc-data" class="form-input" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="isc-local">Ponto / Árvore / Referência *</label>
+          <input type="text" id="isc-local" class="form-input" placeholder="Ex: Mata do fundo, Ipê amarelo..." />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Coordenadas GPS (Opcional)</label>
+          <div style="display:flex; gap:8px;">
+            <input type="text" id="isc-gps" class="form-input" placeholder="Latitude, Longitude" />
+            <button type="button" class="btn-outline" style="white-space:nowrap;" onclick="capturarGPSIsca()">📍 Pegar GPS</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="isc-obs">Observações</label>
+          <textarea id="isc-obs" rows="2" class="form-textarea" placeholder="Volume da isca (2L, 3L), loção atrativa, altura..."></textarea>
+        </div>
+
+        <button type="button" class="btn-primary" style="width:100%;" onclick="saveIsca()">Salvar Ponto de Isca</button>
+      </div>
+    </div>
+
+    <!-- MODAL MOVIMENTO FINANCEIRO -->
+    <div id="modal-mov" class="modal-backdrop">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 class="modal-title">💰 Lançar Venda ou Gasto</h3>
+          <button type="button" class="btn-close" onclick="closeModal('modal-mov')">✕</button>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="mov-tipo">Tipo *</label>
+            <select id="mov-tipo" class="form-select">
+              <option value="ENTRADA">🟢 Venda (Entrada)</option>
+              <option value="SAIDA">🔴 Gasto (Saída)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="mov-valor">Valor (R$) *</label>
+            <input type="number" id="mov-valor" step="0.01" min="0" class="form-input" placeholder="0,00" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="mov-desc">Descrição *</label>
+          <input type="text" id="mov-desc" class="form-input" placeholder="Ex: 2 frascos mel Mandaçaia, Caixas INPA..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="mov-data">Data</label>
+          <input type="date" id="mov-data" class="form-input" />
+        </div>
+        <button type="button" class="btn-amber" style="width:100%;" onclick="saveMov()">Salvar Lançamento</button>
+      </div>
+    </div>
+
+    <!-- MODAL GUIA RAINHA -->
+    <div id="modal-rainha" class="modal-backdrop">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 class="modal-title">👑 Guia Rápido de Rainhas &amp; Postura</h3>
+          <button type="button" class="btn-close" onclick="closeModal('modal-rainha')">✕</button>
+        </div>
+        <div style="font-size:0.84rem; color:var(--slate-700); display:flex; flex-direction:column; gap:10px;">
+          <div class="item-card ok">
+            <strong>🌿 Abelhas Sem Ferrão (ASF):</strong>
+            <p style="margin-top:4px;">Observe discos de cria horizontais ou helicoidais (Mandaçaia, Jataí, Uruçu). Postura centrífuga (do centro para as bordas) e células operculadas regulares indicam rainha fisogástrica ativa.</p>
+          </div>
+          <div class="item-card warning">
+            <strong>👑 Apis mellifera (Com Ferrão):</strong>
+            <p style="margin-top:4px;">1 ovo único no fundo do alvéolo = rainha fecundada. Vários ovos nas paredes do alvéolo = operária poedeira (enxame zanganeiro). Realeiras no meio do favo = emergência; na borda inferior = enxameação.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL BACKUP -->
+    <div id="modal-backup" class="modal-backdrop">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 class="modal-title">💾 Backup &amp; Segurança dos Dados</h3>
+          <button type="button" class="btn-close" onclick="closeModal('modal-backup')">✕</button>
+        </div>
+        <p style="font-size:0.83rem; color:var(--slate-600); margin-bottom:12px;">
+          Seus registros ficam salvos localmente no navegador deste aparelho e funcionam 100% sem internet. Exporte um arquivo <strong>.JSON</strong> regularmente para guardar no WhatsApp ou Google Drive.
+        </p>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <button type="button" class="btn-primary" onclick="exportJSON()">⬇️ Exportar Backup (.JSON)</button>
+          <label class="btn-outline" style="text-align:center; display:block;">
+            ⬆️ Restaurar Backup (.JSON)
+            <input type="file" accept=".json" style="display:none;" onchange="importJSON(event)" />
+          </label>
+          <hr style="border:none; border-top:1px solid var(--slate-200); margin:6px 0;" />
+          <button type="button" class="btn-outline" style="color:var(--danger); border-color:#fecaca;" onclick="resetarLicencaLocal()">🔒 Desvincular Chave Neste Aparelho</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- =========================================================
+       FIREBASE REALTIME DATABASE SDK (COMPAT)
+       ========================================================= -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+  <script>
+    /* =====================================================================
+       1. CONFIGURAÇÃO E VALIDAÇÃO DE LICENÇA (FIREBASE REALTIME DATABASE)
+       ===================================================================== */
+    const firebaseConfig = {
+      apiKey: "AIzaSyDcAo7iem3hRVPJBMtTJAWGPCt7SKIRGWE",
+      authDomain: "marcos-tce.firebaseapp.com",
+      databaseURL: "https://marcos-tce-default-rtdb.firebaseio.com",
+      projectId: "marcos-tce",
+      storageBucket: "marcos-tce.firebasestorage.app",
+      messagingSenderId: "1012632363408",
+      appId: "1:1012632363408:web:d545c44322b67d8a465315",
+      measurementId: "G-5Q0MC4RLWF"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const rtdb = firebase.database();
+
+    const LICENSE_KEY_STORAGE = 'manejo_pro_license_key';
+    const DEVICE_ID_STORAGE = 'manejo_pro_device_id';
+
+    function getDeviceId() {
+      let devId = localStorage.getItem(DEVICE_ID_STORAGE);
+      if (!devId) {
+        devId = 'DEV-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2, 7).toUpperCase();
+        localStorage.setItem(DEVICE_ID_STORAGE, devId);
+      }
+      return devId;
+    }
+
+    async function consultarChaveRealtimeDB(chave) {
+      const deviceId = getDeviceId();
+      const ref = rtdb.ref('licencas/' + chave);
+      const snapshot = await ref.once('value');
+
+      if (!snapshot.exists()) {
+        return { ok: false, msg: 'Chave inválida ou não cadastrada.' };
+      }
+
+      const dados = snapshot.val();
+
+      if (dados.ativa !== true) {
+        return { ok: false, msg: 'Esta licença está desativada ou suspensa.' };
+      }
+
+      if (!dados.deviceId || dados.deviceId === '') {
+        await ref.update({ deviceId: deviceId });
+        return { ok: true, cliente: dados.cliente || '' };
+      }
+
+      if (dados.deviceId !== deviceId) {
+        return { ok: false, msg: 'Esta chave já está vinculada a outro dispositivo.' };
+      }
+
+      return { ok: true, cliente: dados.cliente || '' };
+    }
+
+    async function ativarLicenca() {
+      const inputEl = document.getElementById('license-input');
+      const btnEl = document.getElementById('license-btn');
+      const errEl = document.getElementById('license-error');
+
+      const chave = inputEl.value.trim().toUpperCase();
+      if (!chave) {
+        errEl.textContent = 'Por favor, digite a sua chave de licença.';
+        return;
+      }
+
+      btnEl.disabled = true;
+      btnEl.textContent = 'Validando licença...';
+      errEl.textContent = '';
+
+      try {
+        const res = await consultarChaveRealtimeDB(chave);
+        if (res.ok) {
+          localStorage.setItem(LICENSE_KEY_STORAGE, chave);
+          desbloquearInterface();
+          showToast('Aplicativo ativado com sucesso!');
+        } else {
+          errEl.textContent = res.msg;
+        }
+      } catch (err) {
+        console.error('Erro Firebase RTDB:', err);
+        errEl.textContent = 'Erro ao conectar ao servidor. Verifique sua internet.';
+      } finally {
+        btnEl.disabled = false;
+        btnEl.textContent = 'Ativar Aplicativo';
+      }
+    }
+
+    function desbloquearInterface() {
+      document.getElementById('license-gate').classList.add('hidden');
+      document.getElementById('app-shell').classList.remove('hidden');
+      initApp();
+    }
+
+    function resetarLicencaLocal() {
+      if (!confirm('Deseja desvincular a chave deste aparelho? Você precisará digitá-la novamente ao abrir.')) return;
+      localStorage.removeItem(LICENSE_KEY_STORAGE);
+      location.reload();
+    }
+
+    document.getElementById('license-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') ativarLicenca();
+    });
+
+    window.addEventListener('DOMContentLoaded', async function() {
+      const chaveSalva = localStorage.getItem(LICENSE_KEY_STORAGE);
+      if (!chaveSalva) return;
+
+      if (!navigator.onLine) {
+        desbloquearInterface();
+        return;
+      }
+
+      desbloquearInterface();
+      try {
+        const check = await consultarChaveRealtimeDB(chaveSalva);
+        if (!check.ok) {
+          localStorage.removeItem(LICENSE_KEY_STORAGE);
+          document.getElementById('app-shell').classList.add('hidden');
+          document.getElementById('license-gate').classList.remove('hidden');
+          document.getElementById('license-error').textContent = check.msg;
+        }
+      } catch (e) {}
+    });
+
+    /* =====================================================================
+       2. ESTADO LOCAL & PERSISTÊNCIA OFFLINE (LOCALSTORAGE)
+       ===================================================================== */
+    const DB_KEY = 'manejo_pro_db_v1';
+    const MESES_NOMES = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+
+    let state = {
+      nomeMeliponario: 'Meu Meliponário',
+      mesesSemFlorada: [5, 6, 7],
+      floradaNota: 'Período de entressafra: fornecer xarope 1:1 / bombom de pólen e plantar espécies melíferas.',
+      lastBackup: null,
+      waPix: '',
+      waCustom: '',
+      caixas: [],
+      iscas: [],
+      diario: [],
+      movimentos: []
+    };
+
+    let currentTab = 'hoje';
+    let caixaFilter = 'TODAS';
+    let iscaFilter = 'TODAS';
+    let diarioFilter = 'TODOS';
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(DB_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          state = Object.assign({}, state, parsed);
+        } else {
+          const hojeStr = todayISO();
+          const daqui10 = addDaysISO(hojeStr, 10);
+          state.caixas = [
+            {
+              id: 'cx_demo_1',
+              codigo: 'CX-01',
+              especie: 'Mandaçaia (Melipona quadrifasciata)',
+              forca: 'FORTE',
+              origem: 'DIVISAO',
+              melgueiras: 2,
+              rainha: 'Postura regular / OK',
+              quadrosCria: 5,
+              quadrosAlimento: 4,
+              proximoManejo: 'Colher mel',
+              proximaData: daqui10,
+              local: 'Bancada Principal',
+              obs: 'Enxame populoso, boa reserva de pólen e mel.',
+              ultimaRevisaoData: hojeStr,
+              revisaoAnterior: null
+            }
+          ];
+          saveState();
+        }
+      } catch (e) {
+        console.error('Erro ao carregar dados:', e);
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem(DB_KEY, JSON.stringify(state));
+    }
+
+    function todayISO() {
+      const d = new Date();
+      return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+
+    function addDaysISO(baseISO, days) {
+      const parts = baseISO.split('-').map(Number);
+      const d = new Date(parts[0], parts[1] - 1, parts[2]);
+      d.setDate(d.getDate() + Number(days || 0));
+      return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+
+    function formatDateBR(iso) {
+      if (!iso) return '—';
+      const p = iso.split('-');
+      if (p.length !== 3) return iso;
+      return `${p[2]}/${p[1]}/${p[0]}`;
+    }
+
+    function diffDaysFromToday(targetISO) {
+      if (!targetISO) return 999;
+      const t = todayISO().split('-').map(Number);
+      const d = targetISO.split('-').map(Number);
+      const d1 = new Date(t[0], t[1] - 1, t[2]);
+      const d2 = new Date(d[0], d[1] - 1, d[2]);
+      return Math.round((d2 - d1) / (1000 * 60 * 60 * 24));
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.style.display = 'block';
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => { el.style.display = 'none'; }, 2800);
+    }
+
+    function openModal(id) { document.getElementById(id).classList.add('open'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+    /* =====================================================================
+       3. INICIALIZAÇÃO E NAVEGAÇÃO ENTRE ABAS
+       ===================================================================== */
+    function initApp() {
+      loadState();
+      document.getElementById('header-nome-display').textContent = state.nomeMeliponario || 'Meu Meliponário';
+      document.getElementById('hoje-data-label').textContent = formatDateBR(todayISO());
+      document.getElementById('wa-pix').value = state.waPix || '';
+      document.getElementById('wa-itens-custom').value = state.waCustom || '';
+      checkBackupBanner();
+      renderAll();
+    }
+
+    function renderAll() {
+      renderHoje();
+      renderCaixas();
+      renderIscas();
+      populateCompararSelect();
+      renderComparativo();
+      renderDiario();
+      renderFinanceiro();
+      renderWaPreview();
+    }
+
+    function switchTab(tab) {
+      currentTab = tab;
+      ['hoje', 'caixas', 'iscas', 'comparar', 'diario'].forEach(t => {
+        document.getElementById('view-' + t).classList.toggle('hidden', t !== tab);
+      });
+      document.querySelectorAll('.nav-item').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-tab') === tab);
+      });
+      if (tab === 'comparar') {
+        populateCompararSelect();
+        renderComparativo();
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function switchDiarioSub(sub) {
+      const map = { LOG: 'diario-log-pane', FIN: 'diario-fin-pane', WA: 'diario-wa-pane', EXP: 'diario-exp-pane' };
+      const btns = { LOG: 'sub-btn-log', FIN: 'sub-btn-fin', WA: 'sub-btn-wa', EXP: 'sub-btn-exp' };
+      Object.keys(map).forEach(k => {
+        document.getElementById(map[k]).classList.toggle('hidden', k !== sub);
+        document.getElementById(btns[k]).classList.toggle('active', k === sub);
+      });
+      if (sub === 'WA') renderWaPreview();
+    }
+
+    /* =====================================================================
+       4. NOME DO MELIPONÁRIO & FLORADA / ENTRESSAFRA
+       ===================================================================== */
+    function openEditNomeModal() {
+      document.getElementById('input-meliponario-nome').value = state.nomeMeliponario || '';
+      openModal('modal-nome');
+    }
+
+    function saveMeliponarioNome() {
+      const val = document.getElementById('input-meliponario-nome').value.trim();
+      if (!val) return;
+      state.nomeMeliponario = val;
+      saveState();
+      document.getElementById('header-nome-display').textContent = val;
+      closeModal('modal-nome');
+      renderWaPreview();
+      showToast('Nome atualizado!');
+    }
+
+    function openFloradaModal() {
+      const grid = document.getElementById('months-selector');
+      grid.innerHTML = MESES_NOMES.map((m, idx) => {
+        const ativo = state.mesesSemFlorada.includes(idx);
+        return `<button type="button" class="month-chip ${ativo ? 'sem-florada' : ''}" onclick="toggleMesFlorada(${idx}, this)">${m}${ativo ? '<br><small>Sem florada</small>' : ''}</button>`;
+      }).join('');
+      document.getElementById('florada-nota-input').value = state.floradaNota || '';
+      openModal('modal-florada');
+    }
+
+    function toggleMesFlorada(idx, btn) {
+      const pos = state.mesesSemFlorada.indexOf(idx);
+      if (pos >= 0) {
+        state.mesesSemFlorada.splice(pos, 1);
+      } else {
+        state.mesesSemFlorada.push(idx);
+      }
+      openFloradaModal();
+    }
+
+    function saveFloradaConfig() {
+      state.floradaNota = document.getElementById('florada-nota-input').value.trim();
+      saveState();
+      closeModal('modal-florada');
+      renderHoje();
+      showToast('Calendário de florada salvo!');
+    }
+
+    /* =====================================================================
+       5. ABA HOJE (ALERTAS + KPIS)
+       ===================================================================== */
+    function renderHoje() {
+      const mesAtual = new Date().getMonth();
+      const emEntressafra = state.mesesSemFlorada.includes(mesAtual);
+      const floradaBox = document.getElementById('florada-alert-container');
+      const btnHeaderFlorada = document.getElementById('btn-header-florada');
+
+      if (emEntressafra) {
+        btnHeaderFlorada.classList.add('florada-alerta');
+        floradaBox.innerHTML = `
+          <div class="banner-piscante-florada">
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">
+              <strong>⚠️ ALERTA DE ENTRESSAFRA (${MESES_NOMES[mesAtual].toUpperCase()})</strong>
+              <button type="button" class="btn-amber" style="padding:5px 10px; font-size:0.74rem;" onclick="openFloradaModal()">Ajustar</button>
+            </div>
+            <p style="font-size:0.82rem; margin-top:5px;">${state.floradaNota || 'Mês configurado sem florada. Reforce a alimentação artificial e o plantio de pasto apícola.'}</p>
+          </div>`;
+      } else {
+        btnHeaderFlorada.classList.remove('florada-alerta');
+        floradaBox.innerHTML = `
+          <div class="status-florada-strip">
+            <span>🌸 <strong>Mês com Florada (${MESES_NOMES[mesAtual]}):</strong> Bom momento para produção e divisões.</span>
+            <button type="button" class="btn-outline" style="padding:4px 9px; font-size:0.72rem;" onclick="openFloradaModal()">Calendário</button>
+          </div>`;
+      }
+
+      const pendentes = state.caixas.filter(c => diffDaysFromToday(c.proximaData) <= 0);
+      const revBox = document.getElementById('revisao-alert-container');
+      if (pendentes.length > 0) {
+        revBox.innerHTML = `
+          <div class="banner-piscante-revisao">
+            <strong>🚨 ${pendentes.length} ${pendentes.length === 1 ? 'caixa precisa' : 'caixas precisam'} de revisão hoje ou está atrasada!</strong>
+            <p style="font-size:0.8rem; margin-top:4px;">Verifique a lista de alertas abaixo e registre o manejo após inspecionar.</p>
+          </div>`;
+      } else {
+        revBox.innerHTML = '';
+      }
+
+      const totalCaixas = state.caixas.length;
+      const fortes = state.caixas.filter(c => c.forca === 'FORTE').length;
+      const totalMelgueiras = state.caixas.reduce((acc, c) => acc + Number(c.melgueiras || 0), 0);
+      const iscasCapturadas = state.iscas.filter(i => i.status === 'CAPTURADA').length;
+
+      document.getElementById('kpi-container').innerHTML = `
+        <div class="kpi-card">
+          <div class="kpi-label">Colmeias Ativas</div>
+          <div class="kpi-value">${totalCaixas}</div>
+          <div class="kpi-sub">${fortes} fortes</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Melgueiras</div>
+          <div class="kpi-value" style="color:#d97706;">${totalMelgueiras}</div>
+          <div class="kpi-sub">em produção</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Revisões Hoje</div>
+          <div class="kpi-value" style="color:${pendentes.length ? '#dc2626' : '#15803d'};">${pendentes.length}</div>
+          <div class="kpi-sub">${pendentes.length ? 'atenção imediata' : 'tudo em dia'}</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Iscas Capturadas</div>
+          <div class="kpi-value">${iscasCapturadas}</div>
+          <div class="kpi-sub">de ${state.iscas.length} instaladas</div>
+        </div>`;
+
+      const ordenadas = [...state.caixas].sort((a, b) => diffDaysFromToday(a.proximaData) - diffDaysFromToday(b.proximaData));
+      const listaEl = document.getElementById('lista-alertas-hoje');
+      if (ordenadas.length === 0) {
+        listaEl.innerHTML = `<div class="empty-box">Nenhuma caixa cadastrada ainda. Toque em <strong>+ Nova Caixa</strong> para começar.</div>`;
+        return;
+      }
+
+      listaEl.innerHTML = ordenadas.slice(0, 8).map(c => {
+        const dias = diffDaysFromToday(c.proximaData);
+        const cls = dias < 0 ? 'urgent' : (dias <= 3 ? 'warning' : 'ok');
+        const statusTxt = dias < 0 ? `Atrasada há ${Math.abs(dias)}d` : (dias === 0 ? 'Revisar HOJE' : `Em ${dias} dias (${formatDateBR(c.proximaData)})`);
+        return `
+          <div class="item-card ${cls}">
+            <div class="card-top">
+              <div>
+                <span class="card-code ${isApis(c.especie) ? 'apis' : ''}">${c.codigo}</span>
+                <div class="card-title">${c.especie}</div>
+                <div class="card-meta">Próxima ação: <strong>${c.proximoManejo || 'Revisão'}</strong> • ${statusTxt}</div>
+              </div>
+              <span class="badge badge-${c.forca.toLowerCase()} ${dias <= 0 ? 'badge-pulsante' : ''}">${labelForca(c.forca)}</span>
+            </div>
+            <div class="card-actions">
+              <button type="button" class="btn-act primary" onclick="openManejoRapidoModal('${c.id}')">⚡ Registrar Manejo</button>
+              <button type="button" class="btn-act" onclick="openCaixaModal('${c.id}')">✏️ Ficha</button>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    /* =====================================================================
+       6. GESTÃO DE CAIXAS & COLMEIAS
+       ===================================================================== */
+    function isApis(especie) {
+      return (especie || '').toLowerCase().includes('apis');
+    }
+
+    function labelForca(f) {
+      return { FORTE: '🟢 Forte', MEDIO: '🟡 Médio', FRACO: '🔴 Fraco', FORMACAO: '🔵 Formação' }[f] || f;
+    }
+
+    function labelOrigem(o) {
+      return { RESGATE: 'Resgate/Isca', DIVISAO: 'Divisão', COMPRA: 'Compra', NATIVO: 'Nativo' }[o] || o;
+    }
+
+    function setCaixaFilter(f) {
+      caixaFilter = f;
+      document.querySelectorAll('#caixa-filters .filter-pill').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-filter') === f);
+      });
+      renderCaixas();
+    }
+
+    function renderCaixas() {
+      let list = [...state.caixas];
+      if (caixaFilter === 'ASF') list = list.filter(c => !isApis(c.especie));
+      if (caixaFilter === 'APIS') list = list.filter(c => isApis(c.especie));
+      if (caixaFilter === 'ATRASADAS') list = list.filter(c => diffDaysFromToday(c.proximaData) <= 0);
+      if (caixaFilter === 'MELGUEIRA') list = list.filter(c => Number(c.melgueiras || 0) > 0);
+
+      const container = document.getElementById('lista-caixas');
+      if (list.length === 0) {
+        container.innerHTML = `<div class="empty-box">Nenhuma caixa encontrada neste filtro.</div>`;
+        return;
+      }
+
+      container.innerHTML = list.map(c => {
+        const dias = diffDaysFromToday(c.proximaData);
+        const cls = dias < 0 ? 'urgent' : (dias === 0 ? 'warning' : 'ok');
+        return `
+          <div class="item-card ${cls}">
+            <div class="card-top">
+              <div>
+                <span class="card-code ${isApis(c.especie) ? 'apis' : ''}">${c.codigo}</span>
+                ${c.local ? `<span style="font-size:0.72rem; color:var(--slate-500); margin-left:6px;">📍 ${c.local}</span>` : ''}
+                <div class="card-title">${c.especie}</div>
+                <div class="card-meta">Rainha: ${c.rainha || 'OK'} • Cria: ${c.quadrosCria || 0} | Alimento: ${c.quadrosAlimento || 0}</div>
+              </div>
+              <span class="badge badge-${c.forca.toLowerCase()}">${labelForca(c.forca)}</span>
+            </div>
+
+            <div class="dede-grid">
+              <div class="dede-cell">
+                <div class="dede-label">Origem</div>
+                <div class="dede-val">${labelOrigem(c.origem)}</div>
+              </div>
+              <div class="dede-cell">
+                <div class="dede-label">Melgueiras</div>
+                <div class="melgueira-ctrl">
+                  <button type="button" class="mini-step-btn" onclick="stepMelgueira('${c.id}', -1)">−</button>
+                  <strong style="font-size:0.95rem;">${c.melgueiras || 0}</strong>
+                  <button type="button" class="mini-step-btn" onclick="stepMelgueira('${c.id}', 1)">+</button>
+                </div>
+              </div>
+              <div class="dede-cell">
+                <div class="dede-label">Próx. Manejo</div>
+                <div class="dede-val">${c.proximoManejo || 'Revisão'}</div>
+              </div>
+              <div class="dede-cell">
+                <div class="dede-label">Data Revisão</div>
+                <div class="dede-val" style="color:${dias <= 0 ? '#dc2626' : '#0f172a'};">${formatDateBR(c.proximaData)}</div>
+              </div>
+            </div>
+
+            ${c.obs ? `<p class="card-meta" style="margin-top:8px; background:var(--slate-50); padding:6px 8px; border-radius:8px;">📝 ${c.obs}</p>` : ''}
+
+            <div class="card-actions">
+              <button type="button" class="btn-act primary" onclick="openManejoRapidoModal('${c.id}')">⚡ Manejo</button>
+              <button type="button" class="btn-act amber" onclick="openCaixaModal('${c.id}')">✏️ Editar</button>
+              <button type="button" class="btn-act" onclick="verComparativoCaixa('${c.id}')">📊 Comparar</button>
+              <button type="button" class="btn-act danger" onclick="deleteCaixa('${c.id}')">🗑️</button>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    function stepMelgueira(id, delta) {
+      const cx = state.caixas.find(c => c.id === id);
+      if (!cx) return;
+      cx.melgueiras = Math.max(0, Number(cx.melgueiras || 0) + delta);
+      saveState();
+      renderAll();
+      showToast(`Melgueiras de ${cx.codigo}: ${cx.melgueiras}`);
+    }
+
+    function selectSeg(groupId, val) {
+      const group = document.getElementById(groupId);
+      group.setAttribute('data-selected', val);
+      group.querySelectorAll('.seg-btn').forEach(b => {
+        b.classList.toggle('selected', b.getAttribute('data-val') === val);
+      });
+    }
+
+    function openCaixaModal(id = null) {
+      document.getElementById('cx-id').value = id || '';
+      if (id) {
+        const cx = state.caixas.find(c => c.id === id);
+        if (!cx) return;
+        document.getElementById('modal-caixa-title').textContent = `Editar Ficha — ${cx.codigo}`;
+        document.getElementById('cx-codigo').value = cx.codigo;
+        document.getElementById('cx-especie').value = cx.especie;
+        selectSeg('seg-cx-forca', cx.forca || 'FORTE');
+        selectSeg('seg-cx-origem', cx.origem || 'DIVISAO');
+        document.getElementById('cx-melgueiras').value = cx.melgueiras || 0;
+        document.getElementById('cx-rainha').value = cx.rainha || 'Postura regular / OK';
+        document.getElementById('cx-quadros-cria').value = cx.quadrosCria || 0;
+        document.getElementById('cx-quadros-alimento').value = cx.quadrosAlimento || 0;
+        document.getElementById('cx-proximo-manejo').value = cx.proximoManejo || 'Revisão de rotina';
+        document.getElementById('cx-proxima-data').value = cx.proximaData || addDaysISO(todayISO(), 15);
+        document.getElementById('cx-local').value = cx.local || '';
+        document.getElementById('cx-obs').value = cx.obs || '';
+      } else {
+        document.getElementById('modal-caixa-title').textContent = 'Nova Caixa / Colmeia';
+        const proxNum = String(state.caixas.length + 1).padStart(2, '0');
+        document.getElementById('cx-codigo').value = `CX-${proxNum}`;
+        document.getElementById('cx-especie').value = '';
+        selectSeg('seg-cx-forca', 'FORTE');
+        selectSeg('seg-cx-origem', 'DIVISAO');
+        document.getElementById('cx-melgueiras').value = 0;
+        document.getElementById('cx-rainha').value = 'Postura regular / OK';
+        document.getElementById('cx-quadros-cria').value = 3;
+        document.getElementById('cx-quadros-alimento').value = 2;
+        document.getElementById('cx-proximo-manejo').value = 'Revisão de rotina';
+        document.getElementById('cx-proxima-data').value = addDaysISO(todayISO(), 15);
+        document.getElementById('cx-local').value = '';
+        document.getElementById('cx-obs').value = '';
+      }
+      openModal('modal-caixa');
+    }
+
+    function saveCaixa() {
+      const id = document.getElementById('cx-id').value;
+      const codigo = document.getElementById('cx-codigo').value.trim();
+      const especie = document.getElementById('cx-especie').value.trim();
+      if (!codigo || !especie) {
+        alert('Preencha a Identificação (CX Nº) e a Espécie.');
+        return;
+      }
+
+      const payload = {
+        codigo,
+        especie,
+        forca: document.getElementById('seg-cx-forca').getAttribute('data-selected') || 'FORTE',
+        origem: document.getElementById('seg-cx-origem').getAttribute('data-selected') || 'DIVISAO',
+        melgueiras: Number(document.getElementById('cx-melgueiras').value || 0),
+        rainha: document.getElementById('cx-rainha').value,
+        quadrosCria: Number(document.getElementById('cx-quadros-cria').value || 0),
+        quadrosAlimento: Number(document.getElementById('cx-quadros-alimento').value || 0),
+        proximoManejo: document.getElementById('cx-proximo-manejo').value,
+        proximaData: document.getElementById('cx-proxima-data').value || addDaysISO(todayISO(), 15),
+        local: document.getElementById('cx-local').value.trim(),
+        obs: document.getElementById('cx-obs').value.trim()
+      };
+
+      if (id) {
+        const idx = state.caixas.findIndex(c => c.id === id);
+        if (idx >= 0) {
+          const antiga = state.caixas[idx];
+          state.caixas[idx] = {
+            ...antiga,
+            ...payload,
+            revisaoAnterior: {
+              data: antiga.ultimaRevisaoData || todayISO(),
+              forca: antiga.forca,
+              melgueiras: antiga.melgueiras,
+              quadrosCria: antiga.quadrosCria,
+              quadrosAlimento: antiga.quadrosAlimento,
+              rainha: antiga.rainha
+            },
+            ultimaRevisaoData: todayISO()
+          };
+        }
+      } else {
+        state.caixas.push({
+          id: 'cx_' + Date.now(),
+          ...payload,
+          ultimaRevisaoData: todayISO(),
+          revisaoAnterior: null
+        });
+      }
+
+      saveState();
+      closeModal('modal-caixa');
+      renderAll();
+      showToast('Ficha da caixa salva!');
+    }
+
+    function deleteCaixa(id) {
+      if (!confirm('Excluir esta caixa permanentemente?')) return;
+      state.caixas = state.caixas.filter(c => c.id !== id);
+      saveState();
+      renderAll();
+      showToast('Caixa removida.');
+    }
+
+    /* =====================================================================
+       7. MANEJO RÁPIDO & DIÁRIO
+       ===================================================================== */
+    function openManejoRapidoModal(caixaId = null) {
+      if (state.caixas.length === 0) {
+        alert('Cadastre uma caixa primeiro para registrar um manejo.');
+        openCaixaModal();
+        return;
+      }
+      const sel = document.getElementById('mn-caixa-id');
+      sel.innerHTML = state.caixas.map(c => `<option value="${c.id}">${c.codigo} — ${c.especie}</option>`).join('');
+      if (caixaId) sel.value = caixaId;
+
+      const cx = state.caixas.find(c => c.id === sel.value) || state.caixas[0];
+      document.getElementById('mn-forca').value = cx.forca || 'FORTE';
+      document.getElementById('mn-melgueiras').value = cx.melgueiras || 0;
+      document.getElementById('mn-dias-prox').value = 15;
+      document.getElementById('mn-prox-acao').value = cx.proximoManejo || 'Revisão de rotina';
+      document.getElementById('mn-notas').value = '';
+      openModal('modal-manejo');
+    }
+
+    function saveManejoRapido() {
+      const cxId = document.getElementById('mn-caixa-id').value;
+      const cx = state.caixas.find(c => c.id === cxId);
+      if (!cx) return;
+
+      const tipo = document.getElementById('mn-tipo').value;
+      const novaForca = document.getElementById('mn-forca').value;
+      const novasMelg = Number(document.getElementById('mn-melgueiras').value || 0);
+      const diasProx = Number(document.getElementById('mn-dias-prox').value || 15);
+      const proxAcao = document.getElementById('mn-prox-acao').value.trim() || 'Revisão de rotina';
+      const notas = document.getElementById('mn-notas').value.trim();
+
+      cx.revisaoAnterior = {
+        data: cx.ultimaRevisaoData || todayISO(),
+        forca: cx.forca,
+        melgueiras: cx.melgueiras,
+        quadrosCria: cx.quadrosCria,
+        quadrosAlimento: cx.quadrosAlimento,
+        rainha: cx.rainha
+      };
+
+      cx.forca = novaForca;
+      cx.melgueiras = novasMelg;
+      cx.proximoManejo = proxAcao;
+      cx.proximaData = addDaysISO(todayISO(), diasProx);
+      cx.ultimaRevisaoData = todayISO();
+
+      state.diario.unshift({
+        id: 'log_' + Date.now(),
+        categoria: 'CAIXA',
+        refCodigo: cx.codigo,
+        refTitulo: `${cx.codigo} (${cx.especie})`,
+        tipo,
+        data: todayISO(),
+        notas: notas || `Força: ${labelForca(novaForca)} | Melgueiras: ${novasMelg}`
+      });
+
+      saveState();
+      closeModal('modal-manejo');
+      renderAll();
+      showToast('Manejo registrado e ficha atualizada!');
+    }
+
+    function setDiarioFilter(f) {
+      diarioFilter = f;
+      document.querySelectorAll('#diario-log-pane .filter-pill').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-filter') === f);
+      });
+      renderDiario();
+    }
+
+    function renderDiario() {
+      let logs = [...state.diario];
+      if (diarioFilter !== 'TODOS') logs = logs.filter(l => l.categoria === diarioFilter);
+      const container = document.getElementById('lista-diario');
+      if (logs.length === 0) {
+        container.innerHTML = `<div class="empty-box">Nenhum registro no diário ainda.</div>`;
+        return;
+      }
+      container.innerHTML = logs.map(l => `
+        <div class="item-card ok">
+          <div class="card-top">
+            <div>
+              <span class="card-code">${l.refCodigo}</span>
+              <div class="card-title">${l.tipo}</div>
+              <div class="card-meta">${l.refTitulo} • ${formatDateBR(l.data)}</div>
+            </div>
+          </div>
+          <p class="card-meta" style="margin-top:6px;">${l.notas}</p>
+        </div>`).join('');
+    }
+
+    /* =====================================================================
+       8. PONTOS DE ISCA & CAPTURA (COM GPS)
+       ===================================================================== */
+    function setIscaFilter(f) {
+      iscaFilter = f;
+      document.querySelectorAll('#isca-filters .filter-pill').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-filter') === f);
+      });
+      renderIscas();
+    }
+
+    function renderIscas() {
+      let list = [...state.iscas];
+      if (iscaFilter !== 'TODAS') list = list.filter(i => i.status === iscaFilter);
+      const container = document.getElementById('lista-iscas');
+      if (list.length === 0) {
+        container.innerHTML = `<div class="empty-box">Nenhuma isca cadastrada neste filtro.</div>`;
+        return;
+      }
+      container.innerHTML = list.map(i => `
+        <div class="item-card ${i.status === 'CAPTURADA' ? 'warning' : 'ok'}">
+          <div class="card-top">
+            <div>
+              <span class="card-code">${i.codigo}</span>
+              <div class="card-title">${i.local}</div>
+              <div class="card-meta">${i.especie ? `Espécie: <strong>${i.especie}</strong> • ` : ''}Data: ${formatDateBR(i.data)}</div>
+            </div>
+            <span class="badge badge-${i.status.toLowerCase()}">${i.status}</span>
+          </div>
+          ${i.gps ? `<div class="card-meta" style="margin-top:6px;">📍 GPS: <a href="https://maps.google.com/?q=${encodeURIComponent(i.gps)}" target="_blank" style="color:var(--forest-800); font-weight:700;">${i.gps} (Abrir Mapa)</a></div>` : ''}
+          ${i.obs ? `<p class="card-meta" style="margin-top:6px;">📝 ${i.obs}</p>` : ''}
+          <div class="card-actions">
+            <button type="button" class="btn-act amber" onclick="openIscaModal('${i.id}')">✏️ Editar</button>
+            <button type="button" class="btn-act danger" onclick="deleteIsca('${i.id}')">🗑️</button>
+          </div>
+        </div>`).join('');
+    }
+
+    function openIscaModal(id = null) {
+      document.getElementById('isc-id').value = id || '';
+      if (id) {
+        const isc = state.iscas.find(i => i.id === id);
+        if (!isc) return;
+        document.getElementById('modal-isca-title').textContent = `Editar ${isc.codigo}`;
+        document.getElementById('isc-codigo').value = isc.codigo;
+        document.getElementById('isc-status').value = isc.status;
+        document.getElementById('isc-especie').value = isc.especie || '';
+        document.getElementById('isc-data').value = isc.data || todayISO();
+        document.getElementById('isc-local').value = isc.local;
+        document.getElementById('isc-gps').value = isc.gps || '';
+        document.getElementById('isc-obs').value = isc.obs || '';
+      } else {
+        document.getElementById('modal-isca-title').textContent = 'Novo Ponto de Isca';
+        const num = String(state.iscas.length + 1).padStart(2, '0');
+        document.getElementById('isc-codigo').value = `ISCA-${num}`;
+        document.getElementById('isc-status').value = 'INSTALADA';
+        document.getElementById('isc-especie').value = '';
+        document.getElementById('isc-data').value = todayISO();
+        document.getElementById('isc-local').value = '';
+        document.getElementById('isc-gps').value = '';
+        document.getElementById('isc-obs').value = '';
+      }
+      openModal('modal-isca');
+    }
+
+    function capturarGPSIsca() {
+      if (!navigator.geolocation) {
+        alert('Geolocalização não suportada neste navegador.');
+        return;
+      }
+      showToast('Obtendo localização GPS...');
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          document.getElementById('isc-gps').value = `${pos.coords.latitude.toFixed(6)}, ${pos.coords.longitude.toFixed(6)}`;
+          showToast('Coordenadas GPS capturadas!');
+        },
+        () => alert('Não foi possível obter o GPS. Verifique a permissão de localização do navegador.')
+      );
+    }
+
+    function saveIsca() {
+      const id = document.getElementById('isc-id').value;
+      const codigo = document.getElementById('isc-codigo').value.trim();
+      const local = document.getElementById('isc-local').value.trim();
+      if (!codigo || !local) {
+        alert('Informe o Código da Isca e o Ponto/Local.');
+        return;
+      }
+
+      const payload = {
+        codigo,
+        status: document.getElementById('isc-status').value,
+        especie: document.getElementById('isc-especie').value.trim(),
+        data: document.getElementById('isc-data').value || todayISO(),
+        local,
+        gps: document.getElementById('isc-gps').value.trim(),
+        obs: document.getElementById('isc-obs').value.trim()
+      };
+
+      if (id) {
+        const idx = state.iscas.findIndex(i => i.id === id);
+        if (idx >= 0) state.iscas[idx] = { ...state.iscas[idx], ...payload };
+      } else {
+        state.iscas.push({ id: 'isc_' + Date.now(), ...payload });
+        state.diario.unshift({
+          id: 'log_' + Date.now(),
+          categoria: 'ISCA',
+          refCodigo: codigo,
+          refTitulo: `${codigo} — ${local}`,
+          tipo: `Isca (${payload.status})`,
+          data: payload.data,
+          notas: payload.obs || `Ponto instalado em ${local}`
+        });
+      }
+
+      saveState();
+      closeModal('modal-isca');
+      renderAll();
+      showToast('Ponto de isca salvo!');
+    }
+
+    function deleteIsca(id) {
+      if (!confirm('Remover esta isca?')) return;
+      state.iscas = state.iscas.filter(i => i.id !== id);
+      saveState();
+      renderAll();
+    }
+
+    /* =====================================================================
+       9. COMPARAR FICHA DE REVISÃO (ANTERIOR × ATUAL)
+       ===================================================================== */
+    function populateCompararSelect() {
+      const sel = document.getElementById('comp-caixa-select');
+      const prevVal = sel.value;
+      sel.innerHTML = state.caixas.map(c => `<option value="${c.id}">${c.codigo} — ${c.especie}</option>`).join('');
+      if (prevVal && state.caixas.some(c => c.id === prevVal)) sel.value = prevVal;
+    }
+
+    function verComparativoCaixa(id) {
+      switchTab('comparar');
+      document.getElementById('comp-caixa-select').value = id;
+      renderComparativo();
+    }
+
+    function renderComparativo() {
+      const box = document.getElementById('comparativo-content');
+      const cxId = document.getElementById('comp-caixa-select').value;
+      const cx = state.caixas.find(c => c.id === cxId);
+      if (!cx) {
+        box.innerHTML = `<div class="empty-box">Cadastre uma caixa para visualizar o comparativo.</div>`;
+        return;
+      }
+
+      const ant = cx.revisaoAnterior;
+      if (!ant) {
+        box.innerHTML = `
+          <div class="item-card">
+            <h3 class="card-title">${cx.codigo} — ${cx.especie}</h3>
+            <p class="card-meta" style="margin-top:6px;">Esta caixa ainda possui apenas o registro inicial (<strong>${formatDateBR(cx.ultimaRevisaoData)}</strong>). Assim que você registrar o próximo manejo ou editar a ficha, o comparativo <strong>Revisão Anterior × Atual</strong> aparecerá aqui automaticamente.</p>
+          </div>`;
+        return;
+      }
+
+      const dMelg = Number(cx.melgueiras || 0) - Number(ant.melgueiras || 0);
+      const dCria = Number(cx.quadrosCria || 0) - Number(ant.quadrosCria || 0);
+      const dAlim = Number(cx.quadrosAlimento || 0) - Number(ant.quadrosAlimento || 0);
+
+      const fmtDelta = n => n > 0 ? `<span class="delta-up">+${n}</span>` : (n < 0 ? `<span class="delta-down">${n}</span>` : `<span class="delta-eq">0</span>`);
+
+      box.innerHTML = `
+        <div class="item-card">
+          <h3 class="card-title">${cx.codigo} — ${cx.especie}</h3>
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>Indicador</th>
+                <th>Anterior (${formatDateBR(ant.data)})</th>
+                <th>Atual (${formatDateBR(cx.ultimaRevisaoData)})</th>
+                <th>Evolução</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Força</strong></td>
+                <td>${labelForca(ant.forca)}</td>
+                <td>${labelForca(cx.forca)}</td>
+                <td>${ant.forca === cx.forca ? 'Mantida' : 'Alterada'}</td>
+              </tr>
+              <tr>
+                <td><strong>Melgueiras</strong></td>
+                <td>${ant.melgueiras || 0}</td>
+                <td>${cx.melgueiras || 0}</td>
+                <td>${fmtDelta(dMelg)}</td>
+              </tr>
+              <tr>
+                <td><strong>Cria (Discos/Quadros)</strong></td>
+                <td>${ant.quadrosCria || 0}</td>
+                <td>${cx.quadrosCria || 0}</td>
+                <td>${fmtDelta(dCria)}</td>
+              </tr>
+              <tr>
+                <td><strong>Alimento (Potes/Quadros)</strong></td>
+                <td>${ant.quadrosAlimento || 0}</td>
+                <td>${cx.quadrosAlimento || 0}</td>
+                <td>${fmtDelta(dAlim)}</td>
+              </tr>
+              <tr>
+                <td><strong>Rainha</strong></td>
+                <td>${ant.rainha || 'OK'}</td>
+                <td>${cx.rainha || 'OK'}</td>
+                <td>—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>`;
+    }
+
+    /* =====================================================================
+       10. FINANCEIRO, WHATSAPP & EXPORTAÇÕES (CSV / PDF / JSON)
+       ===================================================================== */
+    function openMovModal() {
+      document.getElementById('mov-valor').value = '';
+      document.getElementById('mov-desc').value = '';
+      document.getElementById('mov-data').value = todayISO();
+      openModal('modal-mov');
+    }
+
+    function saveMov() {
+      const valor = parseFloat(document.getElementById('mov-valor').value);
+      const desc = document.getElementById('mov-desc').value.trim();
+      if (!valor || valor <= 0 || !desc) {
+        alert('Informe um valor válido e uma descrição.');
+        return;
+      }
+      state.movimentos.unshift({
+        id: 'mov_' + Date.now(),
+        tipo: document.getElementById('mov-tipo').value,
+        valor,
+        desc,
+        data: document.getElementById('mov-data').value || todayISO()
+      });
+      saveState();
+      closeModal('modal-mov');
+      renderFinanceiro();
+      showToast('Lançamento salvo!');
+    }
+
+    function renderFinanceiro() {
+      let ent = 0, sai = 0;
+      state.movimentos.forEach(m => {
+        if (m.tipo === 'ENTRADA') ent += Number(m.valor || 0);
+        else sai += Number(m.valor || 0);
+      });
+      const fmt = v => 'R$ ' + v.toFixed(2).replace('.', ',');
+      document.getElementById('fin-entradas').textContent = fmt(ent);
+      document.getElementById('fin-saidas').textContent = fmt(sai);
+      document.getElementById('fin-saldo').textContent = fmt(ent - sai);
+
+      const listEl = document.getElementById('lista-movimentos');
+      if (state.movimentos.length === 0) {
+        listEl.innerHTML = `<div class="empty-box">Nenhuma venda ou despesa lançada.</div>`;
+        return;
+      }
+      listEl.innerHTML = state.movimentos.map(m => `
+        <div class="item-card ${m.tipo === 'ENTRADA' ? 'ok' : 'urgent'}">
+          <div class="card-top">
+            <div>
+              <div class="card-title">${m.desc}</div>
+              <div class="card-meta">${formatDateBR(m.data)}</div>
+            </div>
+            <strong style="color:${m.tipo === 'ENTRADA' ? '#15803d' : '#dc2626'};">${m.tipo === 'ENTRADA' ? '+' : '−'} ${fmt(m.valor)}</strong>
+          </div>
+        </div>`).join('');
+    }
+
+    function saveWaConfig() {
+      state.waPix = document.getElementById('wa-pix').value;
+      saveState();
+      renderWaPreview();
+    }
+
+    function pullAutoItemsToWa() {
+      const especiesComMel = [...new Set(state.caixas.filter(c => Number(c.melgueiras || 0) > 0).map(c => c.especie))];
+      if (especiesComMel.length === 0) {
+        showToast('Nenhuma caixa com melgueira ativa no momento.');
+        return;
+      }
+      const texto = especiesComMel.map(esp => `• Mel de ${esp.split('(')[0].trim()} — consulte disponibilidade`).join('\n');
+      document.getElementById('wa-itens-custom').value = texto;
+      state.waCustom = texto;
+      saveState();
+      renderWaPreview();
+    }
+
+    function renderWaPreview() {
+      state.waCustom = document.getElementById('wa-itens-custom').value;
+      saveState();
+      const linhas = [
+        `🍯 *${state.nomeMeliponario}*`,
+        `Disponibilidade atual de produtos naturais:`,
+        '',
+        state.waCustom.trim() || '• Mel artesanal de abelhas nativas (consulte)',
+        ''
+      ];
+      if (state.waPix && state.waPix.trim()) {
+        linhas.push(`💳 *Contato / PIX:* ${state.waPix.trim()}`);
+      }
+      linhas.push('Envie uma mensagem para reservar o seu!');
+      document.getElementById('wa-preview-box').textContent = linhas.join('\n');
+    }
+
+    function copyWaText() {
+      const txt = document.getElementById('wa-preview-box').textContent;
+      navigator.clipboard.writeText(txt).then(() => showToast('Texto copiado para o WhatsApp!'));
+    }
+
+    function sendWaDirect() {
+      const txt = encodeURIComponent(document.getElementById('wa-preview-box').textContent);
+      window.open(`https://wa.me/?text=${txt}`, '_blank');
+    }
+
+    function getFilteredCaixasForExport(escopo) {
+      if (escopo === 'APIS') return state.caixas.filter(c => isApis(c.especie));
+      if (escopo === 'ASF') return state.caixas.filter(c => !isApis(c.especie));
+      if (escopo === 'PENDENTES') return state.caixas.filter(c => diffDaysFromToday(c.proximaData) <= 0);
+      return state.caixas;
+    }
+
+    function exportRevisaoCSV() {
+      const escopo = document.getElementById('exp-escopo').value;
+      const lista = getFilteredCaixasForExport(escopo);
+      const header = ['Codigo', 'Especie', 'Forca', 'Origem', 'Melgueiras', 'Rainha', 'Proximo Manejo', 'Proxima Revisao', 'Local'];
+      const rows = lista.map(c => [
+        c.codigo, c.especie, c.forca, c.origem, c.melgueiras, c.rainha, c.proximoManejo, formatDateBR(c.proximaData), c.local || ''
+      ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(';'));
+
+      const csv = '\uFEFF' + [header.join(';'), ...rows].join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `manejo-pro-ficha-${todayISO()}.csv`;
+      a.click();
+      showToast('Planilha .CSV exportada!');
+    }
+
+    function printRevisaoTabela() {
+      const escopo = document.getElementById('exp-escopo').value;
+      if (escopo === 'COMPARATIVO') {
+        printComparativoFicha();
+        return;
+      }
+      const lista = getFilteredCaixasForExport(escopo);
+      const sheet = document.getElementById('print-sheet');
+      sheet.innerHTML = `
+        <h1>${state.nomeMeliponario} — Ficha de Revisão (${escopo})</h1>
+        <p>Emitido em ${formatDateBR(todayISO())} • Total: ${lista.length} colmeias</p>
+        <table>
+          <thead>
+            <tr><th>CX</th><th>Espécie</th><th>Força</th><th>Melg.</th><th>Rainha</th><th>Próximo Manejo</th><th>Data Rev.</th></tr>
+          </thead>
+          <tbody>
+            ${lista.map(c => `<tr><td>${c.codigo}</td><td>${c.especie}</td><td>${c.forca}</td><td>${c.melgueiras}</td><td>${c.rainha}</td><td>${c.proximoManejo}</td><td>${formatDateBR(c.proximaData)}</td></tr>`).join('')}
+          </tbody>
+        </table>`;
+      window.print();
+    }
+
+    function printComparativoFicha() {
+      const cxId = document.getElementById('comp-caixa-select').value;
+      const cx = state.caixas.find(c => c.id === cxId);
+      if (!cx) return;
+      const ant = cx.revisaoAnterior || {};
+      const sheet = document.getElementById('print-sheet');
+      sheet.innerHTML = `
+        <h1>${state.nomeMeliponario} — Comparativo de Revisão</h1>
+        <p>Caixa: <strong>${cx.codigo} — ${cx.especie}</strong> • Emitido em ${formatDateBR(todayISO())}</p>
+        <table>
+          <thead><tr><th>Indicador</th><th>Revisão Anterior (${formatDateBR(ant.data)})</th><th>Revisão Atual (${formatDateBR(cx.ultimaRevisaoData)})</th></tr></thead>
+          <tbody>
+            <tr><td>Força</td><td>${ant.forca || '—'}</td><td>${cx.forca}</td></tr>
+            <tr><td>Melgueiras</td><td>${ant.melgueiras ?? '—'}</td><td>${cx.melgueiras}</td></tr>
+            <tr><td>Cria (Discos/Quadros)</td><td>${ant.quadrosCria ?? '—'}</td><td>${cx.quadrosCria}</td></tr>
+            <tr><td>Alimento (Potes/Quadros)</td><td>${ant.quadrosAlimento ?? '—'}</td><td>${cx.quadrosAlimento}</td></tr>
+            <tr><td>Rainha</td><td>${ant.rainha || '—'}</td><td>${cx.rainha}</td></tr>
+          </tbody>
+        </table>`;
+      window.print();
+    }
+
+    function openBackupModal() { openModal('modal-backup'); }
+
+    function checkBackupBanner() {
+      const banner = document.getElementById('backup-alert');
+      if (!state.lastBackup) {
+        banner.classList.remove('hidden');
+        return;
+      }
+      const dias = Math.abs(diffDaysFromToday(state.lastBackup));
+      banner.classList.toggle('hidden', dias < 7);
+    }
+
+    function exportJSON() {
+      state.lastBackup = todayISO();
+      saveState();
+      checkBackupBanner();
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `backup-manejo-pro-${todayISO()}.json`;
+      a.click();
+      showToast('Backup .JSON salvo com sucesso!');
+    }
+
+    function importJSON(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (!imported.caixas) throw new Error('Formato inválido');
+          state = Object.assign({}, state, imported);
+          saveState();
+          renderAll();
+          closeModal('modal-backup');
+          showToast('Backup restaurado com sucesso!');
+        } catch (err) {
+          alert('Arquivo de backup inválido.');
+        }
+      };
+      reader.readAsText(file);
+    }
+  </script>
+</body>
+</html>
