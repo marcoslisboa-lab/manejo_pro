@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Manejo Pro — Meliponário &amp; Apicultura Offline</title>
+  <title>Manejo Pro – Meliponário &amp; Apicultura Offline</title>
   <meta name="theme-color" content="#14532d" />
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png" />
+  <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+  <link rel="manifest" href="manifest.json" />
   <style>
     /* =====================================================================
        IDENTIDADE VISUAL: VERDE-MATA & ÂMBAR/MEL (100% EMBUTIDA)
@@ -2208,6 +2211,12 @@
         }
       };
       reader.readAsText(file);
+    }
+ </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
     }
   </script>
 </body>
